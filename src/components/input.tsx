@@ -12,7 +12,7 @@ function Heading({ title }: { title: string }) {
 
 function SelectBreed() {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);
-  const [selectBreed, setSelectBreed] = useState<string>("");
+  const [selectBreed, setSelectBreed] = useState<string>("Select Breed");
   const breeds = () => {
     return ["breed_1", "breed_2"];
   };
@@ -47,14 +47,11 @@ function SelectBreed() {
     <>
       <div className="announcement">
         <div>
-          {selectBreed
-            ? `You selected ${selectBreed} for your travel destination`
-            : "Select your travel destination"}
+          {selectBreed ? `You selected ${selectBreed}` : "Select breed"}
         </div>
       </div>
       <DropdownButton
         title={selectBreed ? "Select: " + selectBreed : "Select ..."}
-        variant="success"
         className={showDropDown ? "active" : undefined}
         onClick={(): void => toggleDropDown()}
         onBlur={(e: React.FocusEvent<HTMLButtonElement>): void =>
