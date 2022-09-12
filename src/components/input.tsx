@@ -43,7 +43,7 @@ function SelectBreed() {
   // Think what you want to achieve. If you just want to toggle the state, the toggleDropdown should be enough
   // When you look into this and maybe redo the whole dropdown system, really try to think what each click event should do
   // And try not to call and set the same state in many places. It's hard to read and understand and in a working project
-  // would lead to difficulties in maintaining the project. Prefer using one function over and over that sets the state
+  // it would lead to difficulties in maintaining the project. Prefer using one function over and over that sets the state
 
   const toggleDropDown = () => {
     setShowDropDown(!showDropDown);

@@ -28,12 +28,13 @@ const DropDown: React.FC<DropDownProps> = ({
   // is not a string, breeds is an arrays of strings and you probably don't want to set the breed to all breeds.
   const onClickHandler = (breeds: string): void => {
     breedSelection(breeds);
+    setShowDropDown(false);
   };
   // What was the idea here? This is listening to the showDropDown boolean and always setting it to true. Also again, you are
   // setting the showDropDown in too many places
   useEffect(() => {
     setShowDropDown(showDropDown);
-  }, [showDropDown]);
+  });
 
   // If you want to use the bootstrap dropdown, you can use it here in the return, remeber to import it in this file.
   // For example
@@ -48,20 +49,22 @@ const DropDown: React.FC<DropDownProps> = ({
 
   return (
     <>
-      <div className={showDropDown ? "dropdown" : "dropdown active"}>
-        {breeds.map((breed: string, index: number): JSX.Element => {
-          return (
-            <p
-              key={index}
-              onClick={(): void => {
-                onClickHandler(breed);
-              }}
-            >
-              {breed}
-            </p>
-          );
-        })}
-      </div>
+      {showDropDown && (
+        <div className={showDropDown ? "dropdown" : "dropdown active"}>
+          {breeds.map((breed: string, index: number): JSX.Element => {
+            return (
+              <p
+                key={index}
+                onClick={(): void => {
+                  onClickHandler(breed);
+                }}
+              >
+                {breed}
+              </p>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
